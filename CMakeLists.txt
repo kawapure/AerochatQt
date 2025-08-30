@@ -36,13 +36,25 @@ else()
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
+        find_package(Qt5 REQUIRED COMPONENTS Widgets)
+
         add_executable(AerochatQt
             ${PROJECT_SOURCES}
+            control/cnineslice.h control/cnineslice.cpp
+            macos_shit.mm
         )
     endif()
 endif()
 
+if(APPLE)
+    find_library(AppKit_LIBRARY AppKit)
+    if(AppKit_LIBRARY)
+        target_link_libraries(AerochatQt PRIVATE ${AppKit_LIBRARY})
+    endif()
+endif()
+
 target_link_libraries(AerochatQt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(AerochatQt PRIVATE Qt5::Widgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
