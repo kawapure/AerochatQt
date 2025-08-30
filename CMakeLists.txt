@@ -48,7 +48,7 @@ target_link_libraries(AerochatQt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 if(${QT_VERSION} VERSION_LESS 6.1.0)
-  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.AerochatQt)
+  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER live.aerochat.AerochatQt)
 endif()
 set_target_properties(AerochatQt PROPERTIES
     ${BUNDLE_ID_OPTION}
