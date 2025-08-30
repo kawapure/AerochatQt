@@ -52,6 +52,8 @@ if(${QT_VERSION} VERSION_LESS 6.1.0)
 endif()
 set_target_properties(AerochatQt PROPERTIES
     ${BUNDLE_ID_OPTION}
+    MACOSX_BUNDLE_BUNDLE_NAME "Aerochat" # Override Qt for now as the project is named "AerochatQt"
+                                         # but I want "Aerochat" to show up in the menu bar.
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
