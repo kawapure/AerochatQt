@@ -42,6 +42,7 @@ else()
             ${PROJECT_SOURCES}
             control/cnineslice.h control/cnineslice.cpp
             macos_shit.mm
+            aerochat.qrc
         )
     endif()
 endif()

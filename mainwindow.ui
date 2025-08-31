@@ -6,14 +6,102 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>400</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Windows Live Messenger</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <property name="styleSheet">
+   <string notr="true">#MainWindow
+{
+	/* background: qlineargradient(x1:0 y1:0 x2:0 y2:5, stop:0 white, stop:1 rgba(59, 178, 234, 255)); */
+    	border-image: url(&quot;:/Resources/Message/Background.png&quot;) 0 0 0 0 stretch stretch;
+}
+
+#SceneView
+{
+    border-image: url(&quot;:/Resources/DefaultScene.png&quot;) 0 0 0 0 stretch stretch;
+}
+
+#SceneOverlay
+{
+    background: qlineargradient(x1:0 y1:0 y2:0 y2:1, stop:0 transparent, stop:1 white);
+}
+
+#SignInLabel
+{
+	color: #355a88;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="SignInLabel">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>210</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>19</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>Sign in</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="SceneOverlay">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>401</width>
+      <height>128</height>
+     </rect>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="SceneView">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>401</width>
+      <height>128</height>
+     </rect>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>SignInLabel</zorder>
+   <zorder>SceneView</zorder>
+   <zorder>SceneOverlay</zorder>
+  </widget>
  </widget>
  <resources/>
  <connections/>

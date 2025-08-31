@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/Message/Background.png</file>
+        <file>Resources/DefaultScene.png</file>
+    </qresource>
+</RCC>
