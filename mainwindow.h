@@ -13,6 +13,8 @@ class CMainWindow : public QMainWindow
 {
     Q_OBJECT
 
+    void resizeEvent(QResizeEvent *pEvent) override;
+
 public:
     CMainWindow(QWidget *pParent = nullptr);
     ~CMainWindow();

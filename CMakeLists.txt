@@ -12,11 +12,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        macos_shit.mm
+        control/ccolorizednineslice.cpp
+        control/ccolorizednineslice.h
+        aerochat.qrc
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -37,12 +44,12 @@ else()
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
         find_package(Qt5 REQUIRED COMPONENTS Widgets)
+find_package(Qt5 REQUIRED COMPONENTS Widgets)
 
         add_executable(AerochatQt
             ${PROJECT_SOURCES}
             control/cnineslice.h control/cnineslice.cpp
-            macos_shit.mm
-            aerochat.qrc
+            common.h
         )
     endif()
 endif()
@@ -55,6 +62,7 @@ if(APPLE)
 endif()
 
 target_link_libraries(AerochatQt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(AerochatQt PRIVATE Qt5::Widgets)
 target_link_libraries(AerochatQt PRIVATE Qt5::Widgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -14,10 +14,14 @@
    <string>Windows Live Messenger</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#MainWindow
+   <string notr="true">/*#MainWindow
 {
-	/* background: qlineargradient(x1:0 y1:0 x2:0 y2:5, stop:0 white, stop:1 rgba(59, 178, 234, 255)); */
     	border-image: url(&quot;:/Resources/Message/Background.png&quot;) 0 0 0 0 stretch stretch;
+}*/
+
+#SceneBackground
+{
+    background: rgba(59, 178, 234, 255);
 }
 
 #SceneView
@@ -34,6 +38,9 @@
 {
 	color: #355a88;
 }</string>
+  </property>
+  <property name="backgroundFileName" stdset="0">
+   <string/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="SignInLabel">
@@ -79,7 +86,53 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="SceneView">
+   <widget class="CColorizedNineSlice" name="Background" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>100</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="backgroundFileName" stdset="0">
+     <string>:/Resources/Message/Background.png</string>
+    </property>
+    <property name="tintColor" stdset="0">
+     <color>
+      <red>59</red>
+      <green>178</green>
+      <blue>234</blue>
+     </color>
+    </property>
+   </widget>
+   <widget class="QWidget" name="SceneView" native="true">
+    <property name="geometry">
+     <rect>
+      <x>-1</x>
+      <y>-1</y>
+      <width>401</width>
+      <height>128</height>
+     </rect>
+    </property>
+    <property name="tintColor" stdset="0">
+     <color>
+      <red>59</red>
+      <green>178</green>
+      <blue>234</blue>
+     </color>
+    </property>
+   </widget>
+   <widget class="QWidget" name="SceneBackground" native="true">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -88,21 +141,24 @@
       <height>128</height>
      </rect>
     </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="text">
-     <string/>
+    <property name="tintColor" stdset="0">
+     <color>
+      <red>59</red>
+      <green>178</green>
+      <blue>234</blue>
+     </color>
     </property>
    </widget>
-   <zorder>SignInLabel</zorder>
-   <zorder>SceneView</zorder>
-   <zorder>SceneOverlay</zorder>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CColorizedNineSlice</class>
+   <extends>QWidget</extends>
+   <header>control/ccolorizednineslice.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
