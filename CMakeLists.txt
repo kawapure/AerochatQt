@@ -19,12 +19,16 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        macos_shit.mm
         control/ccolorizednineslice.cpp
         control/ccolorizednineslice.h
         aerochat.qrc
-
 )
+
+if (APPLE)
+    set(PROJECT_SOURCES ${PROJECT_SOURCES}
+        macos_shit.mm
+    )
+endif()
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(AerochatQt
