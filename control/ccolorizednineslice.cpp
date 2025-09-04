@@ -18,7 +18,6 @@ CColorizedNineSlice::CColorizedNineSlice(const QString &rFileName, QWidget *pPar
 
 CColorizedNineSlice::~CColorizedNineSlice()
 {
-    delete _pPixmap;
 }
 
 void CColorizedNineSlice::paintEvent(QPaintEvent *pEvent)
@@ -29,22 +28,16 @@ void CColorizedNineSlice::paintEvent(QPaintEvent *pEvent)
     // all natively.
     QPainter painter(this);
     painter.setRenderHint(QPainter::SmoothPixmapTransform);
-    qDrawBorderPixmap(&painter, pEvent->rect(), QMargins(0, 0, 0, 0), *_pPixmap);
+    qDrawBorderPixmap(&painter, pEvent->rect(), QMargins(0, 0, 0, 0), _pixmap);
 }
 
 void CColorizedNineSlice::LoadBackground(const QString &rFileName)
 {
     // If we already have a background loaded, then make sure that
     // we unload that first.
-    if (_pPixmap)
-    {
-        delete _pPixmap;
-        _pPixmap = nullptr;
-    }
+    _pixmap.load(rFileName);
 
-    _pPixmap = new QPixmap(rFileName);
-
-    ApplyTint(_pPixmap, _tintColor, _dDarken);
+    ApplyTint(&_pixmap, _tintColor, _dDarken);
 
     update();
 }
@@ -54,7 +47,6 @@ void CColorizedNineSlice::ApplyTint(QPixmap *pPixmap, QColor tintColor, double d
     // Get the pixel data of the original image
     int iWidth = pPixmap->width();
     int iHeight = pPixmap->height();
-    //int stride = iWidth * ((pPixmap->))
 
     BYTE tintR = ApplyDarken(_tintColor.red(), dDarken);
     BYTE tintG = ApplyDarken(_tintColor.green(), dDarken);
@@ -77,7 +69,7 @@ void CColorizedNineSlice::ApplyTint(QPixmap *pPixmap, QColor tintColor, double d
         }
     }
 
-    *_pPixmap = QPixmap::fromImage(image);
+    _pixmap = QPixmap::fromImage(image);
 }
 
 void CColorizedNineSlice::SetBackgroundFileName(QString backgroundFileName)

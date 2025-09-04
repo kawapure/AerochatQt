@@ -13,7 +13,7 @@ class CColorizedNineSlice : public QWidget
     Q_OBJECT
 
     // TODO: Does this have any reason to be allocated separately?
-    QPixmap *_pPixmap;
+    QPixmap _pixmap;
 
     void LoadBackground(const QString &rFileName);
     void ApplyTint(QPixmap *pPixmap, QColor tintColor, double dDarken);
